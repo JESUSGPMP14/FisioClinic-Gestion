@@ -1,0 +1,13 @@
+﻿<Dolencias>
+
+	<Dolencias Nombre="Dolor General" Fecha="22/12/23" Tratamiento="Enderezar columna"  RayosX="Imagenes_Dolencias/cadera.jpg" />
+
+	<Dolencias Nombre="Dolor de Cuello Grave" Fecha="01/01/24" Tratamiento="Colocar collarín cervical"  RayosX="Imagenes_Dolencias/cuello.jpg" />
+	
+	<Dolencias Nombre="Torcedura" Fecha="10/11/23" Tratamiento="Colocar muñequera"  RayosX="Imagenes_Dolencias/mano.jpg" />
+
+	<Dolencias Nombre="Problema Respiratorio" Fecha="30/12/23" Tratamiento="Recetar medicamento"  RayosX="Imagenes_Dolencias/pecho.jpg" />
+
+</Dolencias>
+
+

@@ -1,0 +1,17 @@
+﻿<Pacientes>
+	
+	<Pacientes Nombre="Mario" Apellidos="Serrano Bolaños" Direccion="Calle Toledo, 21"  Telefono="622459836"  Edad="24" Sexo="Hombre" Correo="mariodiaz@hotmail.com" DNI="36413762B" Foto="Imagenes_Pacientes/mario.jpg" />
+	
+	<Pacientes Nombre="Laura" Apellidos="González Martínez" Direccion="Avenida Valencia, 45" Telefono="611234567" Edad="32" Sexo="Mujer" Correo="laura.gonzalez@gmail.com" DNI="48652137C" Foto="Imagenes_Pacientes/Laura.jpg" />
+
+	<Pacientes Nombre="Javier" Apellidos="Hernández Pérez" Direccion="Calle Granada, 17" Telefono="633987654" Edad="45" Sexo="Hombre" Correo="javiercorrales@gmail.com" DNI="54237512B" Foto="Imagenes_Pacientes/Javier.jpg" />
+
+	<Pacientes Nombre="Ana" Apellidos="Sánchez Ruiz" Direccion="Plaza Mayor, 8" Telefono="644567890" Edad="28" Sexo="Mujer" Correo="ana.sanchez@gmail.com" DNI="39871456A" Foto="Imagenes_Pacientes/Ana.jpg" />
+
+	<Pacientes Nombre="Carlos" Apellidos="Martínez Gómez" Direccion="Avenida Barcelona, 123" Telefono="655876543" Edad="37" Sexo="Hombre" Correo="carlos.martinez@hotmail.com" DNI="26589314Y" Foto="Imagenes_Pacientes/Carlos.jpg" />
+
+	<Pacientes Nombre="Elena" Apellidos="López Fernández" Direccion="Calle Madrid, 55" Telefono="677234567" Edad="29" Sexo="Mujer" Correo="elena.lopez@gmail.com" DNI="74568932Z" Foto="Imagenes_Pacientes/Elena.jpg" />
+
+	<Pacientes Nombre="Pedro" Apellidos="García López" Direccion="Avenida Sevilla, 76" Telefono="688765432" Edad="41" Sexo="Hombre" Correo="pedro.garcia@yahoo.com" DNI="81974365M" Foto="Imagenes_Pacientes/Pedro.jpg" />
+
+</Pacientes>

@@ -1,0 +1,14 @@
+﻿<Citas>
+
+	<Citas Nombre="Revisión espalda" Fecha="22/12/23"  Hora ="18:00" PerEncargado ="Dr. Miguel Navarro" Area ="Fisioterapia" Observaciones="Sufrió caída desde un primer piso"/>
+
+	<Citas Nombre="Analíticas" Fecha="10/01/24"  Hora ="10:00" PerEncargado ="Dr. Daniel Vega" Area ="Fisioterapia" Observaciones="Sufrió caída desde un primer piso"/>
+
+	<Citas Nombre="Vacuna niño" Fecha="17/04/24"  Hora ="18:00" PerEncargado ="Dra. Rosa Torres" Area ="Pediatría" Observaciones="Vacuna contra la viruela"/>
+
+	<Citas Nombre="Lunar" Fecha="02/12/24"  Hora ="9:00" PerEncargado ="Dr. Miguel Navarro" Area ="Dermatología" Observaciones="Revisión de un lunar"/>
+
+	<Citas Nombre="Revisión" Fecha="21/02/25"  Hora ="15:30" PerEncargado ="Dra. Isabel Díaz" Area ="Oncología" Observaciones="Hacer biopsia"/>
+	
+	
+</Citas>

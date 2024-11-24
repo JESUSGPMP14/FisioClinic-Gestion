@@ -1,0 +1,510 @@
+﻿<Window x:Name="Ventana_principal" x:Class="LABORATORIO.MenuPrincipal"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LABORATORIO"
+      mc:Ignorable="d" 
+      Title="PACIENTES" Height="697" Width="1296" 
+      WindowStartupLocation="CenterScreen" 
+      HorizontalContentAlignment="Stretch" 
+      VerticalContentAlignment="Stretch" 
+      MinHeight="450" MinWidth="700" Background="{x:Null}" Icon="/Assets/admin.jpg">
+
+    <Window.Resources>
+        <ImageBrush x:Key="BackgroundImageBrush" ImageSource="/Assets/fondoLogin.jpg"/>
+    </Window.Resources>
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="106*"/>
+            <RowDefinition Height="220*"/>
+            <RowDefinition Height="355*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="576*"/>
+            <ColumnDefinition Width="46*"/>
+            <ColumnDefinition Width="578*"/>
+            <ColumnDefinition Width="97*"/>
+        </Grid.ColumnDefinitions>
+
+        <TabControl x:Name="tcPestañasMenu" Margin="0,0,10,0" Grid.ColumnSpan="4" Grid.RowSpan="3" BorderBrush="White" Background="White" Foreground="White" OpacityMask="#FF9A9A9A">
+            <TabItem x:Name="Pacientes" Header="Pacientes" Margin="-2,0,-22,0" FontSize="14" >
+                <Grid RenderTransformOrigin="0.477,0.501">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Assets/fondoLogin.jpg" Opacity="0.4"/>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="78*"/>
+                        <RowDefinition Height="472*"/>
+                        <RowDefinition Height="73*"/>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="28*"/>
+                        <ColumnDefinition Width="90*"/>
+                        <ColumnDefinition Width="36*"/>
+                        <ColumnDefinition Width="221*"/>
+                        <ColumnDefinition Width="245*"/>
+                        <ColumnDefinition Width="44*"/>
+                        <ColumnDefinition Width="328*"/>
+                        <ColumnDefinition Width="289*"/>
+                    </Grid.ColumnDefinitions>
+                    <GridSplitter Margin="15,0,0,0" Grid.Column="5" Grid.RowSpan="5" Width="6" HorizontalAlignment="Left" />
+                    <ListBox x:Name="lstListaPacientes" SelectedIndex="0" Margin="6,10,50,26" Grid.Row="2" Grid.ColumnSpan="4" Background="#FFCCCCCC" Grid.Column="1" IsSynchronizedWithCurrentItem="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="32" Height="37" Source="{Binding Foto}"/>
+                                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding Nombre}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}">
+                                <Setter Property="Margin" Value="2"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="Blue"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="BorderBrush" Value="Blue"/>
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                    <Button x:Name="btnCrearPaciente" Content="Crear Paciente" Margin="24,7,25,12"
+                    Background="#FFA8FD96" Foreground="Black" FontWeight="Bold" Grid.Column="3" Grid.Row="3" Click="btnCrearPaciente_Click" />
+                    <Button x:Name="btnModificarPaciente" Content="Modificar Paciente" HorizontalAlignment="Left" Margin="121,7,0,12" Width="172"
+                    Background="#FFFFF192" Foreground="Black" FontWeight="Bold" Grid.Column="6" Grid.Row="3" Click="btnModificarPaciente_Click"  />
+                    <Button x:Name="btnBorrarPaciente" Content="Borrar Paciente" Margin="1,7,0,12"
+                    Background="#FFFFF192" Foreground="Black" FontWeight="Bold" Grid.Column="7" Grid.Row="3" Click="btnBorrarPaciente_Click" HorizontalAlignment="Left" Width="172" />
+
+                    <Label x:Name="lblTitulo" Content="PACIENTES" Margin="48,29,10,10" Grid.Column="3" FontWeight="Bold" Grid.Row="1" FontSize="24"/>
+                    <TabControl Margin="36,10,68,26" Grid.Column="6" Grid.Row="2" Grid.ColumnSpan="2">
+                        <TabItem x:Name="Informacion" Header="Información" Margin="-2,-2,-2,0" BorderBrush="#FFA79C9C">
+                            <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.5,0.5" Height="408">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <Image x:Name="imgFoto" HorizontalAlignment="Left" Height="100" Stretch="UniformToFill" Margin="22,22,0,0" VerticalAlignment="Top" Width="103" 
+                                    Source="{Binding SelectedItem.Foto, ElementName=lstListaPacientes}" Grid.Column="1" Grid.RowSpan="2"/>
+                                <Label x:Name="lblNombre" FontSize="14" Content="Nombre:" HorizontalAlignment="Left" Margin="143,21,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.503,0.596"/>
+                                <TextBox x:Name="txtNombre2" FontSize="14" Text="{Binding SelectedItem.Nombre, ElementName=lstListaPacientes}" Margin="223,22,74,0" VerticalAlignment="Top" Height="26" Grid.Column="1" Grid.RowSpan="2" IsReadOnly="True"/>
+                                <Label x:Name="lblApellidos" FontSize="14" Content="Apellidos:" Margin="136,63,289,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="1.087,0.536"/>
+                                <TextBox x:Name="txtApellidos2" FontSize="14" Text="{Binding SelectedItem.Apellidos, ElementName=lstListaPacientes}" Margin="223,65,74,0" VerticalAlignment="Top" Height="25" IsReadOnly="True"/>
+                                <Label x:Name="lblDireccion" FontSize="14" Content="Direccion:" HorizontalAlignment="Left" Margin="8,150,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+                                <TextBox x:Name="txtDireccion" FontSize="14" Text="{Binding SelectedItem.Direccion, ElementName=lstListaPacientes}" Margin="95,152,74,0" VerticalAlignment="Top" Height="25" IsReadOnly="True" />
+                                <Label x:Name="lblTelefono" FontSize="14" Content="Teléfono:" HorizontalAlignment="Left" Margin="13,195,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.719,2.251"/>
+                                <TextBox x:Name="txtTelefono" FontSize="14" Text="{Binding SelectedItem.Telefono, ElementName=lstListaPacientes}" Margin="95,197,74,0" VerticalAlignment="Top" Height="25" IsReadOnly="True"/>
+                                <Label x:Name="lblEdad" FontSize="14" Content="Edad:" HorizontalAlignment="Left" Margin="38,247,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.609,-0.396"/>
+                                <TextBox x:Name="txtEdad" FontSize="14" Text="{Binding SelectedItem.Edad, ElementName=lstListaPacientes}" Margin="95,249,74,0" VerticalAlignment="Top" Height="25" IsReadOnly="True"/>
+                                <Label x:Name="lblSexo" FontSize="14" Content="Sexo:" HorizontalAlignment="Left" Margin="39,297,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="1.006,0.631"/>
+                                <TextBox x:Name="txtSexo" FontSize="14" Text="{Binding SelectedItem.Sexo, ElementName=lstListaPacientes}" Margin="95,297,74,0" VerticalAlignment="Top" Height="25" IsReadOnly="True"/>
+                                <Label x:Name="lblCorreo" FontSize="14" Content="Correo:" HorizontalAlignment="Left" Margin="26,341,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.781,-0.833"/>
+                                <TextBox x:Name="txtCorreo" FontSize="14" Text="{Binding SelectedItem.Correo, ElementName=lstListaPacientes}" Margin="95,343,74,0" VerticalAlignment="Top" Height="24" IsReadOnly="True"/>
+                                <Label x:Name="lblDNI" FontSize="14" Content="DNI:" HorizontalAlignment="Left" Margin="171,106,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="1.398,1.258"/>
+                                <TextBox x:Name="txtDni" FontSize="14" Text="{Binding SelectedItem.DNI, ElementName=lstListaPacientes}" Margin="223,108,74,0" VerticalAlignment="Top" Height="25" IsReadOnly="True"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="Historial_Medico" Header="Historial" Margin="0,-2,-11,0">
+                            <Grid Background="#FFE5E5E5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="131*"/>
+                                    <RowDefinition Height="22*"/>
+                                    <RowDefinition Height="42*"/>
+                                    <RowDefinition Height="26*"/>
+                                    <RowDefinition Height="43*"/>
+                                    <RowDefinition Height="144*"/>
+                                    <RowDefinition Height="0*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="6*"/>
+                                    <ColumnDefinition Width="214*"/>
+                                    <ColumnDefinition Width="56*"/>
+                                    <ColumnDefinition Width="204*"/>
+                                    <ColumnDefinition Width="27*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgFoto4" HorizontalAlignment="Left" Height="100" Stretch="UniformToFill" Margin="16,22,0,0" VerticalAlignment="Top" Width="103" 
+                                    Source="{Binding SelectedItem.Foto, ElementName=lstListaPacientes}" Grid.Column="1"/>
+                                <Label x:Name="lblFechaH" Content="Fecha:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" FontWeight="Bold" FontSize="14" Grid.Column="2" Grid.Row="2" Height="29" Width="51" Margin="12,0,0,0" Grid.ColumnSpan="2"/>
+                                <Label x:Name="lblFechaH2" FontSize="14" Content="{Binding SelectedItem.Fecha, ElementName=lstHistorialMedico}" Margin="18,7,18,6" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2"/>
+                                <Label x:Name="lblTratamiento" Content="Tratamiento:" HorizontalAlignment="Left" Margin="12,0,0,0" VerticalAlignment="Center" Background="{x:Null}" FontWeight="Bold" FontSize="14" Grid.Column="2" Grid.Row="3" Height="29" Width="94" Grid.ColumnSpan="2"/>
+                                <Label x:Name="lblTratamiento2" FontSize="14" Content="{Binding SelectedItem.Tratamiento, ElementName=lstHistorialMedico}" Margin="3,2,9,10" Grid.Column="3" Grid.Row="4"/>
+                                <Label x:Name="lblnombre3" FontSize="20" Content="{Binding SelectedItem.Nombre, ElementName=lstListaPacientes}" Margin="150,22,4,0" VerticalAlignment="Top" Height="53" Grid.ColumnSpan="3" Grid.Column="1"/>
+                                <ListBox x:Name="lstHistorialMedico" SelectedIndex="0" Margin="16,10,5,30" Background="#FFCCCCCC" IsSynchronizedWithCurrentItem="True" d:ItemsSource="{d:SampleData ItemCount=4}" Grid.Column="1" Grid.RowSpan="5" Grid.Row="1">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Width="32" Height="37" Source="{Binding Foto}"/>
+                                                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding Nombre}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListBoxItem}">
+                                            <Setter Property="Margin" Value="2"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Foreground" Value="Blue"/>
+                                                    <Setter Property="FontWeight" Value="Bold"/>
+                                                    <Setter Property="BorderBrush" Value="Blue"/>
+                                                    <Setter Property="BorderThickness" Value="3"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+                                <Image x:Name="FotoRayos" Margin="57,13,1,10" Stretch="UniformToFill"
+                                   Source="{Binding SelectedItem.RayosX, ElementName=lstHistorialMedico}" Grid.Column="3" Grid.Row="5"
+                                   MouseDown="FotoRayos_MouseDown"/>
+                                <Label Content="Radiografía:" HorizontalAlignment="Left" Margin="14,0,0,109" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14" Grid.Column="2" Grid.Row="5" Height="29" Width="90" Grid.ColumnSpan="2" RenderTransformOrigin="0.858,2.225"/>
+                                <Label Content="Informe" HorizontalAlignment="Left" Margin="14,115,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Grid.Column="2" Height="34" Width="78" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                                <Label Content="{Binding SelectedItem.Nombre, ElementName=lstHistorialMedico}" HorizontalAlignment="Left" Margin="40,115,0,0" VerticalAlignment="Top" Width="145" FontSize="18" FontWeight="Bold" Grid.Column="3" Height="34" Grid.RowSpan="2"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="Citas" Header="Citas" Margin="7,-2,-22,0">
+                            <Grid Background="#FFE5E5E5">
+                                <Image x:Name="imgFoto3" HorizontalAlignment="Left" Height="100" Stretch="UniformToFill" Margin="22,22,0,0" VerticalAlignment="Top" Width="103" 
+                                    Source="{Binding SelectedItem.Foto, ElementName=lstListaPacientes}"/>
+                                <Label x:Name="lblFecha"  FontSize="14" Content="Fecha:" HorizontalAlignment="Left" Margin="243,130,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+                                <Label x:Name="lblFecha2" FontSize="14" Content="{Binding SelectedItem.Fecha, ElementName=lstHistorialPacientes}" Margin="302,132,14,0" VerticalAlignment="Top" Height="25"/>
+                                <Label x:Name="lblHora"  FontSize="14" Content="Hora:" HorizontalAlignment="Left" Margin="248,173,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+                                <Label x:Name="lblHora2" FontSize="14" Content="{Binding SelectedItem.Hora, ElementName=lstHistorialPacientes}" Margin="302,177,14,0" VerticalAlignment="Top" Height="25"/>
+                                <Label x:Name="lblPerEncargado"  FontSize="14" Content="Personal:" HorizontalAlignment="Left" Margin="224,216,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+                                <Label x:Name="lblPerEncargado2" FontSize="14" Content="{Binding SelectedItem.PerEncargado, ElementName=lstHistorialPacientes}" Margin="302,218,14,0" VerticalAlignment="Top" Height="25"/>
+                                <Label x:Name="lblArea"  FontSize="14" Content="Area:" HorizontalAlignment="Left" Margin="247,254,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+                                <Label x:Name="lblArea2" FontSize="14" Content="{Binding SelectedItem.Area, ElementName=lstHistorialPacientes}" Margin="302,258,14,0" VerticalAlignment="Top" Height="25"/>
+                                <Label x:Name="lblObservaciones"  FontSize="14" Content="Observaciones" HorizontalAlignment="Left" Margin="288,301,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" FontStyle="Italic"/>
+                                <Label x:Name="lblObservaciones2" FontSize="14" Content="{Binding SelectedItem.Observaciones, ElementName=lstHistorialPacientes}" Margin="243,330,19,16"/>
+                                <Label x:Name="lblnombre2" FontSize="25" Content="{Binding SelectedItem.Nombre, ElementName=lstListaPacientes}" Margin="221,45,10,0" VerticalAlignment="Top" Height="53"/>
+                                <ListBox x:Name="lstHistorialPacientes" SelectedIndex="0" Margin="22,141,292,36" Background="#FFCCCCCC" IsSynchronizedWithCurrentItem="True" d:ItemsSource="{d:SampleData ItemCount=5}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Width="32" Height="37" Source="{Binding Foto}"/>
+                                                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding Nombre}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListBoxItem}">
+                                            <Setter Property="Margin" Value="2"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Foreground" Value="Blue"/>
+                                                    <Setter Property="FontWeight" Value="Bold"/>
+                                                    <Setter Property="BorderBrush" Value="Blue"/>
+                                                    <Setter Property="BorderThickness" Value="3"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+
+
+
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="Usuario" Header="Usuario" Margin="580,1,-594,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="312*"/>
+                        <ColumnDefinition Width="57*"/>
+                        <ColumnDefinition Width="48*"/>
+                        <ColumnDefinition Width="75*"/>
+                        <ColumnDefinition Width="115*"/>
+                        <ColumnDefinition Width="108*"/>
+                        <ColumnDefinition Width="152*"/>
+                        <ColumnDefinition Width="72*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="14*"/>
+                        <ColumnDefinition Width="303*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0*"/>
+                        <RowDefinition Height="108*"/>
+                        <RowDefinition Height="42*"/>
+                        <RowDefinition Height="22*"/>
+                        <RowDefinition Height="69*"/>
+                        <RowDefinition Height="39*"/>
+                        <RowDefinition Height="48*"/>
+                        <RowDefinition Height="65*"/>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="54*"/>
+                        <RowDefinition Height="59*"/>
+                        <RowDefinition Height="102*"/>
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="Fondo"  Stretch="UniformToFill" Source="Assets/fondoLogin.jpg" Opacity="0.6" Margin="0,0,0,3" Grid.RowSpan="11" Grid.ColumnSpan="11" Grid.Row="1"/>
+                    <Rectangle Stroke="Black" OpacityMask="Black" Fill="#FF292828"
+                    RenderTransformOrigin="0.75,0.75" RadiusX="20" RadiusY="20" Grid.Row="3" Margin="2,10,0,5" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="9"/>
+                    <Label x:Name="DatosUsuario" Content="Datos Usuario" Margin="3,2,10,1" Foreground="White" FontSize="40" FontStretch="UltraExpanded" FontWeight="Bold" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3"/>
+
+                    <Label x:Name="lblNombre1" Content="Nombre:" Margin="19,3,44,9" Foreground="White" FontSize="20" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lblApellidos1" Content="Apellidos:" Margin="19,5,44,5" Foreground="White" FontSize="20" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lblDNI1" Content="DNI/NIF:" Margin="19,13,44,10" Foreground="White" RenderTransformOrigin="0.663,1.157" FontSize="20" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lblUltAcceso" Content="Ult. acceso:" Margin="19,5,45,12" Foreground="White" FontSize="20" RenderTransformOrigin="0.688,0.458" Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtNombre" Margin="3,10,0,9" TextWrapping="Wrap" IsEnabled="False" FontSize="20" Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtApellidos" Margin="3,5,0,10" TextWrapping="Wrap" IsEnabled="False" FontSize="20" Grid.Row="8" Grid.Column="5" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtDNI" Margin="3,13,0,10" TextWrapping="Wrap" IsEnabled="False" FontSize="20" Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="2" Height="30"/>
+                    <TextBox x:Name="txtHora" Margin="3,12,0,12" TextWrapping="Wrap" IsEnabled="False" FontSize="20" Grid.Row="9" Grid.ColumnSpan="2" Grid.Column="5"/>
+                    <Ellipse Margin="16,9,9,4" Grid.Row="2" Grid.RowSpan="3" Grid.Column="6">
+                        <Ellipse.Stroke>
+                            <ImageBrush Stretch="None"/>
+                        </Ellipse.Stroke>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/admin.jpg" Stretch="Uniform" TileMode="None"/>
+                        </Ellipse.Fill>
+                        <Ellipse.OpacityMask>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Ellipse.OpacityMask>
+                    </Ellipse>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="PersonalSanitario" Header="Personal Sanitario" Margin="-30,0,28,0" OpacityMask="#FFE6E6E6" RenderTransformOrigin="1.533,2.028" FontSize="14">
+                <Grid RenderTransformOrigin="0.477,0.501">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Assets/fondoLogin.jpg" Opacity="0.4"/>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="78*"/>
+                        <RowDefinition Height="515*"/>
+                        <RowDefinition Height="30*"/>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="29*"/>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="532*"/>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="47*"/>
+                        <ColumnDefinition Width="575*"/>
+                        <ColumnDefinition Width="69*"/>
+                    </Grid.ColumnDefinitions>
+                    <GridSplitter Grid.Column="4" Grid.RowSpan="5" Width="6" HorizontalAlignment="Center" />
+
+                    <Label x:Name="lbltitulo" Content="PERSONAL SANITARIO " Margin="103,16,135,17" Grid.Column="2" Grid.Row="1" FontSize="24" FontWeight="Bold"/>
+                    <ListBox x:Name="lstListaPersonal" SelectedIndex="0" Margin="0,10,6,26" Grid.Row="2" Background="#FFCCCCCC" Grid.Column="2" IsSynchronizedWithCurrentItem="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding Nombre}" FontSize="16"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}">
+                                <Setter Property="Margin" Value="8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="Blue"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="BorderBrush" Value="Blue"/>
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                    <TabControl Margin="36,10,5,26" Grid.Column="5" Grid.Row="2">
+                        <TabItem x:Name="Informacion2" Header="Información Personal" Margin="-2,-2,-2,0" BorderBrush="#FFA79C9C">
+                            <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.5,0.5" Height="457">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <Label x:Name="lblNombre2" FontSize="16" Content="Nombre:" HorizontalAlignment="Left" Margin="26,31,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.503,0.596"/>
+                                <TextBox x:Name="txtNombre22" FontSize="16" Text="{Binding SelectedItem.Nombre, ElementName=lstListaPersonal}" Margin="116,34,52,0" VerticalAlignment="Top" Height="26" IsReadOnly="True"/>
+                                <Label x:Name="lblApellidos2" FontSize="16" Content="Apellidos:" Margin="20,88,412,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="1.087,0.536"/>
+                                <TextBox x:Name="txtApellidos22" FontSize="16" Text="{Binding SelectedItem.Apellidos, ElementName=lstListaPersonal}" Margin="116,91,52,0" VerticalAlignment="Top" Height="25" IsReadOnly="True"/>
+                                <Label x:Name="lblTelefono2" FontSize="16" Content="Telefono:" HorizontalAlignment="Left" Margin="25,197,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.719,2.251"/>
+                                <TextBox x:Name="txtTelefono2" FontSize="16" Text="{Binding SelectedItem.Telefono, ElementName=lstListaPersonal}" Margin="116,203,52,0" VerticalAlignment="Top" Height="25" IsReadOnly="True"/>
+                                <Label x:Name="lblEdad2" FontSize="16" Content="Edad:" HorizontalAlignment="Left" Margin="53,257,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.609,-0.396"/>
+                                <TextBox x:Name="txtEdad2" FontSize="16" Text="{Binding SelectedItem.Edad, ElementName=lstListaPersonal}" Margin="116,260,52,0" VerticalAlignment="Top" Height="25" IsReadOnly="True"/>
+                                <Label x:Name="lblSexo2" FontSize="16" Content="Sexo:" HorizontalAlignment="Left" Margin="52,320,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="1.006,0.631"/>
+                                <TextBox x:Name="txtSexo2" FontSize="16" Text="{Binding SelectedItem.Sexo, ElementName=lstListaPersonal}" Margin="116,323,52,0" VerticalAlignment="Top" Height="25" IsReadOnly="True"/>
+                                <Label x:Name="lblCorreo2" FontSize="16" Content="Correo:" HorizontalAlignment="Left" Margin="39,373,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.781,-0.833"/>
+                                <TextBox x:Name="txtCorreo2" FontSize="16" Text="{Binding SelectedItem.Correo, ElementName=lstListaPersonal}" Margin="116,377,52,0" VerticalAlignment="Top" Height="24" IsReadOnly="True"/>
+                                <Label x:Name="lblDNI2" FontSize="16" Content="DNI:" HorizontalAlignment="Left" Margin="60,145,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="1.398,1.258"/>
+                                <TextBox x:Name="txtDni2" FontSize="16" Text="{Binding SelectedItem.DNI, ElementName=lstListaPersonal}" Margin="116,148,52,0" VerticalAlignment="Top" Height="25" IsReadOnly="True"/>
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem x:Name="ListadoPacientes" Header="Listado de Pacientes" Margin="-2,-2,-2,0" BorderBrush="#FFA79C9C">
+                            <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.5,0.5" Height="457">
+
+                                <!-- ListView para Pacientes Atendidos -->
+                                <ListView Margin="10,10,10,230">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Nombre         |          DNI" Width="220"/>
+                                        </GridView>
+                                    </ListView.View>
+                                    <!-- Datos Estáticos -->
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Width="130" Text=" Javier Hernández" />
+                                            <TextBlock Width="100" Text="87654321B" />
+                                        </StackPanel>
+
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Width="130" Text="    Mario Serrano" />
+                                            <TextBlock Width="100" Text="12345678A" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Width="130" Text="   Laura González" />
+                                            <TextBlock Width="100" Text="48652137C" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                </ListView>
+
+                                <!-- ListView para Horarios -->
+                                <ListView Margin="10,230,10,10">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Fecha            |          Hora" Width="220"/>
+                                        </GridView>
+                                    </ListView.View>
+                                    <!-- Datos Estáticos -->
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Width="120" Text="     20/01/2024" />
+                                            <TextBlock Width="100" Text="       10:00" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Width="120" Text="     25/01/2024" />
+                                            <TextBlock Width="100" Text="       11:00" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Width="120" Text="     2/02/2024" />
+                                            <TextBlock Width="100" Text="       17:00" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                </ListView>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="PersonalLimpieza" Header="Personal Limpieza" Margin="-29,0,28,0" OpacityMask="#FFE6E6E6" RenderTransformOrigin="1.533,2.028" FontSize="14">
+                <Grid RenderTransformOrigin="0.477,0.501">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Assets/fondoLogin.jpg" Opacity="0.4"/>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="78*"/>
+                        <RowDefinition Height="515*"/>
+                        <RowDefinition Height="30*"/>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="Auto" MinWidth="14"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="514*"/>
+                        <ColumnDefinition Width="14*"/>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="606*"/>
+                        <ColumnDefinition Width="78*"/>
+                    </Grid.ColumnDefinitions>
+                    <GridSplitter Grid.Column="5" Grid.RowSpan="5" Width="6" HorizontalAlignment="Center" />
+
+                    <Label x:Name="lblTitulo2" Content="PERSONAL DE LIMPIEZA" Margin="93,23,51,10" Grid.Column="3" FontWeight="Bold" Grid.Row="1" FontSize="24"/>
+                    <ListBox x:Name="lstListaPersonalLimpieza" SelectedIndex="0" Margin="6,10,2,26" Grid.Row="2" Grid.ColumnSpan="3" Background="#FFCCCCCC" Grid.Column="1" IsSynchronizedWithCurrentItem="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding Nombre}" FontSize="16" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}">
+                                <Setter Property="Margin" Value="8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="Blue"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="BorderBrush" Value="Blue"/>
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                    <TabControl Margin="36,10,1,26" Grid.Column="6" Grid.Row="2">
+                        <TabItem x:Name="Informacion3" Header="Información Personal" Margin="-2,-2,-2,0" BorderBrush="#FFA79C9C">
+                            <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.5,0.5" Height="457">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <Label x:Name="lblNombre3" FontSize="16" Content="Nombre:" HorizontalAlignment="Left" Margin="22,34,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.503,0.596"/>
+                                <TextBox x:Name="txtNombre3" FontSize="16" Text="{Binding SelectedItem.Nombre, ElementName=lstListaPersonalLimpieza}" Margin="138,37,77,0" VerticalAlignment="Top" IsReadOnly="True"/>
+                                <Label x:Name="lblApellidos3" FontSize="16" Content="Apellidos:" Margin="25,88,408,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="1.087,0.536"/>
+                                <TextBox x:Name="txtApellidos3" FontSize="16" Text="{Binding SelectedItem.Apellidos, ElementName=lstListaPersonalLimpieza}" Margin="138,88,77,0" VerticalAlignment="Top" IsReadOnly="True"/>
+                                <Label x:Name="lblTelefono3" FontSize="16" Content="Telefono:" HorizontalAlignment="Left" Margin="19,196,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.719,2.251"/>
+                                <TextBox x:Name="txtTelefono3" FontSize="16" Text="{Binding SelectedItem.Telefono, ElementName=lstListaPersonalLimpieza}" Margin="138,199,77,0" VerticalAlignment="Top" IsReadOnly="True"/>
+                                <Label x:Name="lblEdad3" FontSize="16" Content="Edad:" HorizontalAlignment="Left" Margin="47,253,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.609,-0.396"/>
+                                <TextBox x:Name="txtEdad3" FontSize="16" Text="{Binding SelectedItem.Edad, ElementName=lstListaPersonalLimpieza}" Margin="138,256,77,0" VerticalAlignment="Top" IsReadOnly="True"/>
+                                <Label x:Name="lblSexo3" FontSize="16" Content="Sexo:" HorizontalAlignment="Left" Margin="48,314,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="1.006,0.631"/>
+                                <TextBox x:Name="txtSexo3" FontSize="16" Text="{Binding SelectedItem.Sexo, ElementName=lstListaPersonalLimpieza}" Margin="137,317,77,0" VerticalAlignment="Top" IsReadOnly="True"/>
+                                <Label x:Name="lblCorreo3" FontSize="16" Content="Correo:" HorizontalAlignment="Left" Margin="33,373,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="0.781,-0.833"/>
+                                <TextBox x:Name="txtCorreo3" FontSize="16" Text="{Binding SelectedItem.Correo, ElementName=lstListaPersonalLimpieza}" Margin="138,377,77,0" VerticalAlignment="Top" IsReadOnly="True"/>
+                                <Label x:Name="lblDNI3" FontSize="16" Content="DNI:" HorizontalAlignment="Left" Margin="54,148,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" RenderTransformOrigin="1.398,1.258"/>
+                                <TextBox x:Name="txtDni3" FontSize="16" Text="{Binding SelectedItem.DNI, ElementName=lstListaPersonalLimpieza}" Margin="138,151,77,0" VerticalAlignment="Top" IsReadOnly="True"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+        <Button x:Name="Salir" Content="Salir" Margin="549,40,23,0" Foreground="Black" FontSize="14" Click="Salir_Click" RenderTransformOrigin="-0.068,0.203" BorderBrush="Red" Background="#FFFF9999" Height="24" VerticalAlignment="Top" Grid.Column="2" FontFamily="Segoe UI Symbol" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <Button Grid.Column="2" Content="" HorizontalAlignment="Left" Margin="496,0,0,0" VerticalAlignment="Center" Height="45" Width="48" BorderBrush="#00000000" Click="Button_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Assets/help.png" Stretch="Fill" TileMode="None"/>
+            </Button.Background>
+        </Button>
+
+
+    </Grid>
+</Window>

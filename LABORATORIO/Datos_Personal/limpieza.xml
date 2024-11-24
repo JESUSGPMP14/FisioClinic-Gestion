@@ -1,0 +1,11 @@
+﻿<Limpieza>
+
+	<Limpieza Nombre="Felipe" Apellidos="Reyes Mendoza"   Telefono="679123456"  Edad="27" Sexo="Hombre" Correo="felipe.reyes@gmail.com" DNI="31245678K"/>
+
+	<Limpieza Nombre="Cristina" Apellidos="Fernández Alonso"  Telefono="689234567" Edad="36" Sexo="Mujer" Correo="cristina.fernandez@yahoo.com" DNI="52349876L"/>
+
+	<Limpieza Nombre="Manuel" Apellidos="Gutiérrez Delgado"  Telefono="699345678" Edad="50" Sexo="Hombre" Correo="manuel.gutierrez@outlook.com" DNI="63456789M"/>
+
+	<Limpieza Nombre="Patricia" Apellidos="Morales Vázquez"  Telefono="609456789" Edad="33" Sexo="Mujer" Correo="patricia.morales@gmail.com" DNI="74567890N"/>
+
+</Limpieza>

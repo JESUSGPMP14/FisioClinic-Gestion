@@ -1,0 +1,47 @@
+﻿<Sanitario>
+
+	<Sanitario Nombre="Rosa" Apellidos="Torres Quezada"   Telefono="672159843"  Edad="26" Sexo="Mujer" Correo="rosatorres@outlook.com" DNI="47392815J"/>
+		<PacientesAtendidos>
+			<Paciente Nombre2="Mario Serrano" DNI2="12345678A"/>
+			<Paciente Nombre2="Javier Hernández" DNI2="87654321B"/>
+		</PacientesAtendidos>
+		<Horarios>
+			<Horario Fecha="17/04/24"  Hora ="18:00" />
+			<Horario Fecha="18/04/24"  Hora ="17:00" />
+		</Horarios>
+	
+	<Sanitario Nombre="Miguel" Apellidos="Navarro Jiménez"  Telefono="692345678" Edad="34" Sexo="Hombre" Correo="miguel.navarro@yahoo.com" DNI="59743618D"/>
+		<PacientesAtendidos>
+			<Paciente Nombre2="Laura González" DNI2="48652137C"/>
+			<Paciente Nombre2="Pedro García" DNI2="65483321E"/>
+		</PacientesAtendidos>
+		<Horarios>
+			<Horario Fecha="22/12/23"  Hora ="18:00" />
+			<Horario Fecha="02/12/24"  Hora ="9:00" />
+		</Horarios>
+	
+	<Sanitario Nombre="Sofía" Apellidos="Romero Castillo"  Telefono="613986754" Edad="47" Sexo="Mujer" Correo="sofiaromero@outlook.com" DNI="65847291E"/>
+		<PacientesAtendidos>
+
+		</PacientesAtendidos>
+		<Horarios>
+
+		</Horarios>
+	
+	<Sanitario Nombre="Daniel" Apellidos="Vega López"  Telefono="624578901" Edad="30" Sexo="Hombre" Correo="daniel.vega@gmail.com" DNI="41972653F"/>
+		<PacientesAtendidos>
+			<Paciente Nombre2="Carlos Martínez" DNI2="26589314Y"/>
+		</PacientesAtendidos>
+		<Horarios>
+			<Horario Fecha="10/01/24"  Hora ="10:00" />
+		</Horarios>
+	
+	<Sanitario Nombre="Isabel" Apellidos="Díaz Rodríguez"  Telefono="635987654" Edad="39" Sexo="Mujer" Correo="isabel.diaz@hotmail.com" DNI="37658924G"/>
+		<PacientesAtendidos>
+			<Paciente Nombre2="Elena López" DNI2="74568932Z"/>
+		</PacientesAtendidos>
+		<Horarios>
+			<Horario Fecha="21/02/25"  Hora ="15:30" />
+		</Horarios>
+	
+</Sanitario>
